@@ -1,0 +1,6 @@
+{
+  "pathsRelativeTo": "repository",
+  "root": "",
+  "output": "dist",
+  "migrations": ["database/migration.sql", "database/audit_upgrade.sql", "database/simulated_operations.sql"]
+}

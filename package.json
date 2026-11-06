@@ -1,0 +1,1 @@
+{"name":"folhope-farm","version":"1.0.0","private":true,"type":"module","scripts":{"build":"node scripts/build.mjs","check":"node --check public/app.js && node --check src/deployed.mjs && node --check dist/_worker.js"},"engines":{"node":">=20"}}

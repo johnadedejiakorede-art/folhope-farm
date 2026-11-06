@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
+  "name": "fol-hope-farm-management",
+  "main": "src/deployed.mjs",
+  "compatibility_date": "2026-10-13",
+  "workers_dev": true,
+  "vars": {
+    "SUPABASE_URL": "https://enwlfhfkbrqrkpfotpgy.supabase.co",
+    "ENVIRONMENT": "demo"
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "head_sampling_rate": 1
+    }
+  }
+}

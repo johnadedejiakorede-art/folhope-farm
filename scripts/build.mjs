@@ -1,0 +1,10 @@
+import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
+const read = p => readFile(new URL('../'+p,import.meta.url),'utf8');
+let worker = await read('src/worker.js');
+worker = worker.replace('__APP_HTML__',JSON.stringify(await read('public/index.html')));
+worker = worker.replace('export default {',`const APP_JS = ${JSON.stringify(await read('public/app.js'))};\nconst APP_CSS = ${JSON.stringify(await read('public/style.css'))};\nexport default {`);
+await mkdir(new URL('../dist/',import.meta.url),{recursive:true});
+await cp(new URL('../public/',import.meta.url),new URL('../dist/',import.meta.url),{recursive:true});
+await writeFile(new URL('../dist/_worker.js',import.meta.url),worker);
+await writeFile(new URL('../dist/_routes.json',import.meta.url),JSON.stringify({version:1,include:['/*'],exclude:[]}));
+console.log('Built Cloudflare Pages application with server-side API.');
